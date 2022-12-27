@@ -16,8 +16,8 @@ classdef BognerAmpPt3 < Circuit
             
             C1 = Capacitor(470e-12,1,2);
             C2 = Capacitor(470e-12,4,5);
-            o.layout.Cs = [C2]; 
-            %o.layout.Cs = [C1; C2]; 
+            %o.layout.Cs = [C2]; 
+            o.layout.Cs = [C1; C2]; 
              
             model = Model12AX7.EXH;  % RSD1, RSD2, EHX
             

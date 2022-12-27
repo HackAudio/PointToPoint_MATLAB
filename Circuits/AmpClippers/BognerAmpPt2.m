@@ -14,13 +14,14 @@ classdef BognerAmpPt2 < Circuit
             R3 = Resistor(4.75e3,5,0); 
             R4 = Resistor(100e3,3,4);
             %R5 = Resistor(100e3,2,6);
-            o.layout.Rs = [R1; R2; R3; R4];
+            %o.layout.Rs = [R1; R2; R3; R4];
+            o.layout.Rs = [R2; R3; R4];
             
             C1 = Capacitor(470e-12,1,2);
              
             C2 = Capacitor(0.001e-6,3,4);
-            o.layout.Cs = [C2];
-            %o.layout.Cs = [C1; C2]; 
+            %o.layout.Cs = [C1];
+            o.layout.Cs = [C1; C2]; 
              
             model = Model12AX7.RSD1;  % RSD1, RSD2, EXH
             
