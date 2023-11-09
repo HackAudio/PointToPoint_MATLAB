@@ -4,18 +4,23 @@ clear; clc; %close all;
 PointToPointIncludes; % adds all folders to path
 
 % Circuit Examples
-circuit = TubeClipper2;
+circuit = Active2ndOrderLPF;
 
 % CircuitChain Examples
 %circuit = LPFClipper; 
+
+% Open XML Circuit
+%circuit = XMLCircuit('Active2ndOrderLPF.xml');
+
+%saveXMLCircuit(circuit);
 
 Fs = 48000; Ts = 1/Fs;
 bufferSize = 0; 
 circuit.prepare(Fs,bufferSize);
 
 %%%%%%% TYPES OF ANALYSES (Set as many as you want to "true")
-waveform = true;
-frequencyResponse = false;
+waveform = false;
+frequencyResponse = true;
 thdPlot = false;
 dcSweep = false;
 

@@ -1,4 +1,4 @@
-classdef BJT
+classdef BJT < handle
     
     methods
         function o = BJT(doping,type,nodeBase,nodeCollector,nodeEmitter)
@@ -44,6 +44,9 @@ classdef BJT
         end
         function [doping] = getDoping(o)
            doping = o.doping; 
+        end
+        function [type] = getSemiconductor(o)
+           type = o.type; 
         end
         function [nodeBase] = getNodeBase(o)
            nodeBase = o.nodeBase; 

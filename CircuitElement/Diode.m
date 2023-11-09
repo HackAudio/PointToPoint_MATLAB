@@ -45,6 +45,9 @@ classdef Diode < handle
         function [config] = getConfiguration(o)
            config = o.config; 
         end
+        function [type] = getSemiconductor(o)
+           type = o.type; 
+        end
         function [node1] = getNode1(o)
            node1 = o.node1; 
         end

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PointToPointCircuit>
+    <Name>Active2ndOrderLPF</Name>
+    <Category>ClassicFilters</Category>
+    <Settings>
+        <numNodes>4</numNodes>
+        <hasDCBlocker>false</hasDCBlocker>
+    </Settings>
+    <Elements>
+        <VoltageInput>
+            <node1>1</node1>
+            <node2>0</node2>
+        </VoltageInput>
+        <VoltageOutput>
+            <node1>4</node1>
+            <node2>0</node2>
+        </VoltageOutput>
+        <Rs>
+            <Resistor>
+                <value>10000</value>
+                <node1>1</node1>
+                <node2>2</node2>
+            </Resistor>
+        </Rs>
+        <Cs>
+            <Capacitor>
+                <value>1e-08</value>
+                <node1>2</node1>
+                <node2>4</node2>
+            </Capacitor>
+            <Capacitor>
+                <value>1e-08</value>
+                <node1>3</node1>
+                <node2>0</node2>
+            </Capacitor>
+        </Cs>
+        <VarRs>
+            <VariableResistor label="">
+                <parameterNumber>1</parameterNumber>
+                <Direction>INVPROPORTIONAL</Direction>
+                <maxValue>10000</maxValue>
+                <node1>2</node1>
+                <node2>3</node2>
+                <Skew>LINEAR</Skew>
+            </VariableResistor>
+        </VarRs>
+        <OPAmps>
+            <OPAmp>
+                <nonInvertingNode>3</nonInvertingNode>
+                <invertingNode>4</invertingNode>
+                <outputNode>4</outputNode>
+            </OPAmp>
+        </OPAmps>
+    </Elements>
+</PointToPointCircuit>

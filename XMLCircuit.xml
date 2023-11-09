@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PointToPointCircuit>
+    <Name>XMLCircuit</Name>
+    <Category>XML</Category>
+    <Settings>
+        <numNodes>0</numNodes>
+        <hasDCBlocker>false</hasDCBlocker>
+    </Settings>
+    <Elements>
+        <VoltageInput>
+            <node1>1</node1>
+            <node2>0</node2>
+        </VoltageInput>
+        <VoltageOutput>
+            <node1>2</node1>
+            <node2>0</node2>
+        </VoltageOutput>
+    </Elements>
+</PointToPointCircuit>

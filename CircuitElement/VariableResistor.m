@@ -1,6 +1,8 @@
 classdef VariableResistor < handle
     methods
-        function o = VariableResistor(maxValue,parameterNumber,direction,skew,node1,node2)
+        function o = VariableResistor(maxValue,parameterNumber,direction,skew,node1,node2,varargin) 
+            % varargin - optional input variable for a text label (string)
+
             o.maxValue = maxValue;
             o.parameterNumber = parameterNumber;
             o.value = maxValue;
@@ -18,6 +20,10 @@ classdef VariableResistor < handle
             
             o.node1 = node1;
             o.node2 = node2;
+
+            if (~isempty(varargin))
+                o.label = varargin{1,1};
+            end
         end
         function [maxValue] = getMaxValue(o)
            maxValue = o.maxValue; 
@@ -41,6 +47,15 @@ classdef VariableResistor < handle
         function [node2] = getNode2(o)
            node2 = o.node2;
         end
+        function [direction] = getDirection(o)
+           direction = o.direction;
+        end
+        function [skew] = getSkew(o)
+           skew = o.skew;
+        end
+        function [label] = getLabel(o)
+            label = o.label;
+        end
     end
     
     properties (Access = private)
@@ -52,6 +67,7 @@ classdef VariableResistor < handle
         skew;
         node1;
         node2;
+        label = '';
     end
     
     methods (Access = private)

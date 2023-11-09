@@ -32,14 +32,6 @@ classdef Tube12AX7 < handle
         nodeGrid;
         nodeAnode;
         nodeCathode;
-        G;
-        mu;
-        ga;
-        C;
-        Gg;
-        ep;
-        Cg;
-        Io;
     end
         
 end
