@@ -1,14 +1,1 @@
-classdef LPFClipper < CircuitChain
-    
-    methods
-        function [o] = LPFClipper()
-            
-            % This is a "chain" of two different "circuit" types
-            chain = {Passive1stOrderRCLPF,MatchedDiodeClipper};
-            
-            o.createChain(chain);
-            
-        end
-        
-    end
-end
+classdef LPFClipper < CircuitChain        methods        function [o] = LPFClipper()                        % This is a "chain" of two different "circuit" types            chain = {Sallen_Key_A_Low_2kHz,Diode_Ge_Hard_Clipper_Static};                        o.createChain(chain);                    end            endend			

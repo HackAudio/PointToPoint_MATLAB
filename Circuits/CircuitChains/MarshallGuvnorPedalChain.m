@@ -1,0 +1,1 @@
+classdef MarshallGuvnorPedalChain < CircuitChain        methods        function [o] =  MarshallGuvnorPedalChain()                        chain = {Ma_G_Input;...                Ma_G_Drive;...                Ma_G_Tone;...                Ma_G_Output};                        o.createChain(chain);                    end    endend			

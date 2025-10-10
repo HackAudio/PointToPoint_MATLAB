@@ -1,18 +1,23 @@
 % TestCircuit.m
-clear; clc; %close all;
+clear; clc; close all;
 
 PointToPointIncludes; % adds all folders to path
 
-% Circuit Examples
-circuit = Active2ndOrderLPF;
+%%% Circuit Examples
+circuit = State_Variable_A_Low_1kHz;
 
-% CircuitChain Examples
-%circuit = LPFClipper; 
+%%% CircuitChain Examples
+%circuit = LPFClipper2; 
 
-% Open XML Circuit
-%circuit = XMLCircuit('Active2ndOrderLPF.xml');
-
+%%% Save Circuit or CircuitChain as XML file 
+%%% Use in MATLAB or Analog Circuit Factory plug-in
 %saveXMLCircuit(circuit);
+
+%%% Open XML Circuit
+% filename = 'State_Variable_A_Low_1kHz.xml';
+%circuit = XMLCircuit(filename);
+
+
 
 Fs = 48000; Ts = 1/Fs;
 bufferSize = 0; 

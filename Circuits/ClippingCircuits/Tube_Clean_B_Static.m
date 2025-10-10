@@ -1,0 +1,24 @@
+classdef Tube_Clean_B_Static < Circuit 
+    
+    methods
+        function [o] = Tube_Clean_B_Static
+            
+            o.layout.numNodes = 5;
+            o.layout.Vin = VoltageInput (1, 0);
+            o.layout.Vout = VoltageOutput (3, 0);
+            o.layout.Vs = VoltageSource (250, 5);
+            
+            R1 = Resistor (68e3, 1, 2);
+            R2 = Resistor (100e3, 3, 5);
+            R3 = Resistor (91e3, 4, 0);
+            o.layout.Rs = [R1; R2; R3];
+
+            TUBE1 = Tube12AX7 (Model12AX7.EXH, 2, 3, 4);
+            o.layout.Tube12AX7s = TUBE1;
+
+            o.layout.hasDCBlocker = true;
+            
+            o.circuit = CircuitModel (o.layout);
+        end
+    end
+end

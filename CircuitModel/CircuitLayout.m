@@ -6,11 +6,13 @@ classdef CircuitLayout
         Vs;
         Rs;
         VarRs;
+        Pots;
         Cs;
         OPAmps;
         Ds;
         BJTs;
         Tube12AX7s;
+        Output;
         hasDCBlocker = false;
     end
     
@@ -21,11 +23,13 @@ classdef CircuitLayout
             o.Vs = [];
             o.Rs = [];
             o.VarRs = [];
+            o.Pots = [];
             o.Cs = [];
             o.OPAmps = [];
             o.Ds = [];
             o.BJTs = [];
             o.Tube12AX7s = [];
+            o.Output = [];
         end
     end
     

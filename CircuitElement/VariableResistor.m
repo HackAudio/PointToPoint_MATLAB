@@ -1,7 +1,8 @@
 classdef VariableResistor < handle
     methods
         function o = VariableResistor(maxValue,parameterNumber,direction,skew,node1,node2,varargin) 
-            % varargin - optional input variable for a text label (string)
+            % varargin{1} - optional input variable for a text label (string)
+            % varargin{2} - optional input variable for starting value
 
             o.maxValue = maxValue;
             o.parameterNumber = parameterNumber;
@@ -22,7 +23,23 @@ classdef VariableResistor < handle
             o.node2 = node2;
 
             if (~isempty(varargin))
-                o.label = varargin{1,1};
+                if (isstring(varargin{1,1}) || ischar(varargin{1,1}))
+                    % This must be text for the label
+                    o.label = varargin{1,1};
+                else
+                    % If not text, then it could be the starting value
+                    setValue(o,varargin{1,1});
+                end
+
+                if (length(varargin) == 2)
+                    if (isstring(varargin{1,2}) || ischar(varargin{1,2}))
+                        % This must be text for the label
+                        o.label = varargin{1,2};
+                    else
+                        % If not text, then it could be the starting value
+                        setValue(o,varargin{1,2});
+                    end
+                end
             end
         end
         function [maxValue] = getMaxValue(o)
@@ -40,6 +57,9 @@ classdef VariableResistor < handle
         function [value] = getValue(o)
             calculateValue(o); 
             value = o.value;
+        end
+        function [normValue] = getNormValue(o)
+            normValue = o.normValue;
         end
         function [node1] = getNode1(o)
            node1 = o.node1;

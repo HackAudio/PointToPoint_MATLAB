@@ -4,22 +4,26 @@ clear; clc; close all;
 PointToPointIncludes; % adds all folders to path
 
 
-% Circuit Examples
-circuit = GuvnorInput;
+% Circuit Example 
+circuit = Sallen_Key_A_Low_Pass; 
+% Note: Sallen_Key_A_Low_Pass has "1" parameter
+
 % CircuitChain Examples
-
-circuit =  GuvnorInput;
-
-%circuit = LPFClipper; 
-%circuit = LPFClipper2;
-
+%circuit =  MarshallGuvnorPedalChain;
+% Note: MarshallGuvnorPedalChain is made of 4 circuits
+% Ma_G_Input -> Ma_G_Drive -> Ma_G_Tone -> Ma_G_Output
+% Input  has "1" parameter (#1 in array)
+% Drive  has "0" parameters
+% Tone   has "3" parameters (2-4 in array)
+% Output has "1" parameter (#5 in array)
+ 
 Fs = 48000; Ts = 1/Fs;
 bufferSize = 0; % doesn't do anything yet
 circuit.prepare(Fs,bufferSize);
 
 
 %%%%%%% TYPES OF ANALYSES (Set as many as you want to "true")
-waveform = true;
+waveform = false;
 frequencyResponse = false;
 thdPlot = false;
 dcSweep = false;
@@ -30,7 +34,7 @@ dcSweep = false;
 if (waveform)
     
     f = 200;
-    numOfCycles = 3;
+    numOfCycles = 15;
 
     durSec = numOfCycles / f;
     t = [0:Ts:durSec].';
@@ -42,7 +46,7 @@ if (waveform)
     
     for resistorValue = 0:.1:1
 
-        circuit.setParameters([resistorValue; 0.1]);
+        circuit.setParametersNoSmoothing([resistorValue; 1; 1; 1 ; 1]);
 
         for c = 1:channels
             [y] = circuit.process(x,numSamples,c);
@@ -65,9 +69,8 @@ if (frequencyResponse)
     [numSamples,channels] = size(x);
     figure; 
     for resistorValue = 0:.1:1
-        circuit.setParameters([resistorValue]);
+        circuit.setParametersNoSmoothing([resistorValue]);
 
-        
         for c = 1:channels
             [y] = circuit.process(x,numSamples,c);
         end
@@ -96,7 +99,7 @@ if (thdPlot)
     [numSamples,channels] = size(x);
    
     for resistorValue = 0:.1:1
-        circuit.setParameters([1; resistorValue]);
+        circuit.setParametersNoSmoothing([resistorValue ; 0.5 ; 0.5 ; 0.5 ; 0.5]);
         
         for c = 1:channels
             [y] = circuit.process(x,numSamples,c);
@@ -119,7 +122,7 @@ if (dcSweep)
     
     figure;
     for resistorValue = 0:.1:1
-        %circuit.setParameters([resistorValue; 0.6; 0.7; 0.9; 0.8]);
+        circuit.setParametersNoSmoothing([resistorValue; 1; 1; 1; 1]);
         for c = 1:channels
             [y] = circuit.process(x,numSamples,c);
         end
