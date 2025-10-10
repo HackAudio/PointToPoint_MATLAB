@@ -27,12 +27,20 @@ classdef Circuit < CircuitProcessor
             o.circuit.prepare(sampleRate,bufferSize);
         end
         
-        function setSamples4Smooth(o,samples4Smooth)
-            o.circuit.setSamples4Smooth(samples4Smooth);
+        function setParameterUpdateIntervalInSamples(o,samples4Smooth)
+            o.circuit.setParameterUpdateIntervalInSamples(samples4Smooth);
         end
         
-        function [remainingParameters] = setParameters(o,parameters)
-            remainingParameters = o.circuit.setParameters(parameters);
+        function setSmoothResponseTimeMilliseconds(o,milliseconds)
+            o.circuit.setSmoothResponseTimeMilliseconds(milliseconds);
+        end
+
+        function [remainingParameters] = setParametersWithSmoothing(o,parameters)
+            remainingParameters = o.circuit.setParametersWithSmoothing(parameters);
+        end
+
+        function [remainingParameters] = setParametersNoSmoothing(o,parameters)
+            remainingParameters = o.circuit.setParametersNoSmoothing(parameters);
         end
     end
 end

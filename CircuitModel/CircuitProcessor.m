@@ -11,8 +11,12 @@ classdef CircuitProcessor < handle
         
         prepare(o,sampleRate,bufferSize)
         
-        setSamples4Smooth(o,samples4Smooth)
+        setParameterUpdateIntervalInSamples(o,samples4Smooth)
+
+        setSmoothResponseTimeMilliseconds(o,milliseconds)
         
-        setParameters(o,parameters)
+        setParametersWithSmoothing(o,parameters)
+
+        setParametersNoSmoothing(o,parameters)
     end
 end

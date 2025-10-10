@@ -1,0 +1,35 @@
+classdef State_Var_A_Low_Pass < Circuit 
+    
+    methods
+        function [o] = State_Var_A_Low_Pass
+            
+            o.layout.numNodes = 7;
+            o.layout.Vin = VoltageInput (1, 0);
+            o.layout.Vout = VoltageOutput (7, 0);
+            
+            R1 = Resistor (10e3, 1, 2);
+            R2 = Resistor (10e3, 3, 0);
+            R3 = Resistor (10e3, 3, 4);
+            R4 = Resistor (10e3, 2, 7);
+            R5 = Resistor (100, 4, 5);
+            o.layout.Rs = [R1; R2; R3; R4; R5];
+
+            C1 = Capacitor (100e-9, 6, 7);
+            o.layout.Cs = C1;
+
+            OP1 = OPAmp (2, 3, 4);
+            OP2 = OPAmp (0, 6, 7);
+            o.layout.OPAmps = [OP1; OP2];
+
+            % Cutoff Pot
+            VrF = VariableResistor (20e3, 1,...
+                VariableResistorDirection.INVPROPORTIONAL,...
+                VariableResistorSkew.LINEAR,...
+                5, 6, 'Cutoff', 1);
+
+            o.layout.VarRs = VrF;
+            
+            o.circuit = CircuitModel (o.layout);
+        end
+    end
+end

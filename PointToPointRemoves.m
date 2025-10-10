@@ -1,0 +1,15 @@
+% PointToPointRemoves.m
+
+rmpath './CircuitModel'
+rmpath './CircuitElement'
+rmpath './CircuitElement/enums'
+rmpath './Circuits'
+rmpath './Circuits/AmpClippers'
+rmpath './Circuits/AmpToneStacks'
+rmpath './Circuits/CircuitChains'
+rmpath './Circuits/ClippingCircuits'
+rmpath './Circuits/EQCircuits'
+rmpath './Circuits/FilterCircuits'
+rmpath './Circuits/Lite'
+rmpath './Circuits/PedalCircuits'
+rmpath './XML'

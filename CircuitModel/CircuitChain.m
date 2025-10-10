@@ -42,16 +42,29 @@ classdef CircuitChain < CircuitProcessor
             end
         end
         
-        function setSamples4Smooth(o,samples4Smooth)
+        function setParameterUpdateIntervalInSamples(o,samples4Smooth)
             for m = 1:length(o.circuitChain)
-                o.circuitChain{m,1}.setSamples4Smooth(samples4Smooth);
+                o.circuitChain{m,1}.setParameterUpdateIntervalInSamples(samples4Smooth);
+            end
+        end
+
+        function setSmoothResponseTimeMilliseconds(o,milliseconds)
+            for m = 1:length(o.circuitChain)
+                o.circuitChain{m,1}.setSmoothResponseTimeMilliseconds(milliseconds);
             end
         end
         
-        function [remainingParameters] = setParameters(o,parameters)
+        function [remainingParameters] = setParametersWithSmoothing(o,parameters)
             remainingParameters = parameters;
             for m = 1:length(o.circuitChain)
-                remainingParameters = o.circuitChain{m,1}.setParameters(remainingParameters);
+                remainingParameters = o.circuitChain{m,1}.setParametersWithSmoothing(remainingParameters);
+            end
+        end
+
+        function [remainingParameters] = setParametersNoSmoothing(o,parameters)
+            remainingParameters = parameters;
+            for m = 1:length(o.circuitChain)
+                remainingParameters = o.circuitChain{m,1}.setParametersNoSmoothing(remainingParameters);
             end
         end
     end
